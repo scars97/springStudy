@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class JdbcMemberRepository implements MemberRepository {
-
+    //직접적으로 db에 데이터를 넣는 코드. 연결하는 것부터 일일이 다 해줘야함.
     private DataSource dataSource;
 
     public JdbcMemberRepository(DataSource dataSource) {
@@ -33,9 +33,9 @@ public class JdbcMemberRepository implements MemberRepository {
             pstmt.executeUpdate(); //db에 쿼리 날아감
             rs = pstmt.getGeneratedKeys(); //key를 반환해줌 id
 
-            if (rs.next()) { // 값이 있으면
+            if (rs.next()) { // 받아온 값이 있으면
                 member.setId(rs.getLong(1)); //값 세팅
-            } else {
+            } else { //받아온 값이 기존 db에 있으면
                 throw new SQLException("id 조회 실패");
             }
             return member;
