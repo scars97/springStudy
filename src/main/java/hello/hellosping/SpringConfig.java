@@ -1,5 +1,6 @@
 package hello.hellosping;
 
+import hello.hellosping.aop.TimeTraceAop;
 import hello.hellosping.repository.MemberRepository;
 import hello.hellosping.service.MemberService;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,7 @@ public class SpringConfig {
     public MemberService memberService(){
         return new MemberService(memberRepository);
     }
+
 
 //    @Bean
 //    public MemberRepository memberRepository(){
